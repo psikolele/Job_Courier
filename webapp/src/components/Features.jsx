@@ -3,13 +3,20 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const DiagnosticShuffler = () => {
     const baseItems = ['Ticino', 'Canton Ticino', 'Commerciale', 'Ingegneria', 'Medicina'];
-    const [items, setItems] = useState([baseItems[0], baseItems[1], baseItems[2]]);
+    const [items, setItems] = useState([
+        { id: 1, text: baseItems[0] },
+        { id: 2, text: baseItems[1] },
+        { id: 3, text: baseItems[2] }
+    ]);
 
     useEffect(() => {
         const interval = setInterval(() => {
             setItems((prev) => {
                 const next = [...prev];
-                next.unshift(baseItems[Math.floor(Math.random() * baseItems.length)]);
+                next.unshift({
+                    id: Date.now(),
+                    text: baseItems[Math.floor(Math.random() * baseItems.length)]
+                });
                 return next.slice(0, 3);
             });
         }, 3000);
@@ -17,26 +24,26 @@ const DiagnosticShuffler = () => {
     }, []);
 
     return (
-        <div className="relative h-48 w-full glass-dark rounded-[2rem] overflow-hidden p-6 shadow-2xl flex flex-col items-center justify-center">
-            <div className="w-full relative h-[120px]">
+        <div className="relative h-48 w-full glass-dark rounded-[2rem] overflow-hidden p-6 shadow-2xl flex flex-col justify-between group">
+            <div className="w-full h-[70px] relative mt-1">
                 <AnimatePresence>
                     {items.map((item, i) => (
                         <motion.div
-                            key={item + i}
-                            initial={{ opacity: 0, y: -20, scale: 0.95 }}
-                            animate={{ opacity: 1 - i * 0.3, y: i * 35, scale: 1 - i * 0.05, zIndex: 3 - i }}
-                            exit={{ opacity: 0, y: 35 * 3, scale: 0.8 }}
+                            key={item.id}
+                            initial={{ opacity: 0, y: -15, scale: 0.95 }}
+                            animate={{ opacity: 1 - i * 0.35, y: i * 22, scale: 1 - i * 0.05, zIndex: 3 - i }}
+                            exit={{ opacity: 0, y: 22 * 3, scale: 0.8 }}
                             transition={{ type: "spring", stiffness: 100, damping: 20 }}
-                            className="absolute left-0 right-0 mx-auto w-3/4 h-12 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 flex items-center justify-center shadow-lg"
+                            className="absolute left-0 right-0 mx-auto w-[85%] h-8 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 flex items-center justify-center shadow-lg"
                         >
-                            <span className="text-[#FAF8F5] text-sm font-semibold tracking-wide">{item}</span>
+                            <span className="text-[#FAF8F5] text-[11px] font-semibold tracking-wide uppercase">{item.text}</span>
                         </motion.div>
                     ))}
                 </AnimatePresence>
             </div>
-            <div className="mt-6 text-center">
-                <h3 className="text-xl font-bold font-sans text-white mb-2">Ricerca Dinamica</h3>
-                <p className="text-sm text-gray-400">Esplora posizioni per settore e cantone istantaneamente.</p>
+            <div className="mt-auto text-left relative z-10 w-full mb-0 flex flex-col">
+                <h3 className="text-xl font-bold font-sans text-white mb-1">Ricerca Dinamica</h3>
+                <p className="text-sm text-gray-400 leading-tight">Esplora posizioni per settore e cantone istantaneamente.</p>
             </div>
         </div>
     );
