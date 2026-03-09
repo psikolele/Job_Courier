@@ -28,8 +28,8 @@ function App() {
     <div className="relative w-full bg-[#FAF8F5] text-[#2A2A35] min-h-screen selection:bg-[#C9A84C]/30">
       <Navbar />
       <main className="flex flex-col w-full">
-        <Hero />
         <CTA />
+        <Hero />
         <Features />
         <Philosophy />
         <Protocol />
