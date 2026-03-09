@@ -5,7 +5,7 @@ const CTA = () => {
     const [activeSide, setActiveSide] = useState(null); // 'left' or 'right'
 
     return (
-        <section className="w-full min-h-[70vh] flex flex-col md:flex-row bg-background overflow-hidden relative border-t border-b border-gray-200">
+        <section className="w-full min-h-[100dvh] flex flex-col md:flex-row bg-background overflow-hidden relative border-t border-b border-gray-200">
             {/* Candidati Side */}
             <div
                 className={`relative flex flex-col justify-center p-12 md:p-20 border-b md:border-b-0 md:border-r border-gray-200 group transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer ${activeSide === 'left' ? 'md:flex-[1.6] bg-white' : activeSide === 'right' ? 'md:flex-[0.4] bg-background' : 'md:flex-1 bg-background hover:bg-white/50'
