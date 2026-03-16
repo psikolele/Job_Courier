@@ -40,9 +40,14 @@ const CTA = () => {
                         <p className="text-gray-600 mb-10 max-w-md text-lg">
                             Crea il tuo profilo, imposta gli alert per le posizioni desiderate e candidati con un singolo click.
                         </p>
-                        <button className="relative overflow-hidden rounded-full bg-primary px-8 py-4 font-semibold text-background transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98] shadow-lg">
-                            Cerca Offerte
-                        </button>
+                        <div className="flex flex-col sm:flex-row gap-4">
+                            <button className="relative overflow-hidden rounded-full bg-primary px-8 py-4 font-semibold text-background transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98] shadow-lg">
+                                Cerca Offerte
+                            </button>
+                            <a href="https://jobroom.jobcourier.ch/jobs-by-company.php" className="relative overflow-hidden rounded-full border-2 border-primary bg-transparent px-8 py-4 font-semibold text-primary text-center transition-all duration-300 hover:bg-primary/5 hover:scale-[1.03] active:scale-[0.98]">
+                                Tutte le aziende
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
